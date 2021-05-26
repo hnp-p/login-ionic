@@ -1,28 +1,49 @@
+import logonic from "../img/logonic.jpg";
 import {
-  IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
+  IonHeader,
   IonToolbar,
+  IonTitle,
+  IonContent,
+  IonInput,
+  IonButton,
 } from "@ionic/react";
-import ExploreContainer from "../components/ExploreContainer";
 import "./Tab1.css";
+import React, { useState, useEffect } from "react";
 
 const Tab1: React.FC = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  function loginUser() {
+    console.log(username, password);
+  }
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
+          <IonTitle>Login</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+      <IonContent className="ion-padding text-center">
+        <img className="inline-block p-5" src={logonic}></img>
+        <div className="items-center justify-center flex flex-col">
+          <IonInput
+            className="border border-black-500 w-2/12 rounded-lg text-center  "
+            placeholder="Username"
+            onIonChange={(e: any) => setUsername(e.target.value)}
+          />
+          <IonInput
+            className="border border-black-500 w-2/12 rounded-lg mt-3"
+            type="password"
+            placeholder="Password"
+            onIonChange={(e: any) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className="mt-3">
+          <IonButton onClick={loginUser}>Login</IonButton>
+          <IonButton color="medium">Signup</IonButton>
+        </div>
       </IonContent>
     </IonPage>
   );

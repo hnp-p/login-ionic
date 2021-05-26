@@ -1,20 +1,18 @@
 import { Redirect, Route } from "react-router-dom";
-import logonic from "./img/logonic.jpg";
 import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonInput,
-  IonButton,
-  IonImg,
+  IonApp,
+  IonIcon,
+  IonLabel,
+  IonRouterOutlet,
+  IonTabBar,
+  IonTabButton,
+  IonTabs,
 } from "@ionic/react";
-// import { IonReactRouter } from "@ionic/react-router";
-// import { ellipse, square, triangle } from "ionicons/icons";
-// import Tab1 from "./pages/Tab1";
-// import Tab2 from "./pages/Tab2";
-// import Tab3 from "./pages/Tab3";
+import { IonReactRouter } from "@ionic/react-router";
+import { ellipse, square, triangle } from "ionicons/icons";
+import Tab1 from "./pages/Tab1";
+import Tab2 from "./pages/Tab2";
+import Tab3 from "./pages/Tab3";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -34,45 +32,42 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import React, { useState, useEffect } from "react";
 
-const App: React.FC = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const App: React.FC = () => (
+  <IonApp>
+    <IonReactRouter>
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route exact path="/tab1">
+            <Tab1 />
+          </Route>
+          <Route exact path="/tab2">
+            <Tab2 />
+          </Route>
+          <Route path="/tab3">
+            <Tab3 />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/tab1" />
+          </Route>
+        </IonRouterOutlet>
+        <IonTabBar slot="bottom">
+          <IonTabButton tab="tab1" href="/tab1">
+            <IonIcon icon={triangle} />
+            <IonLabel>Tab 1</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tab2" href="/tab2">
+            <IonIcon icon={ellipse} />
+            <IonLabel>Tab 2</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tab3" href="/tab3">
+            <IonIcon icon={square} />
+            <IonLabel>Tab 3</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
+    </IonReactRouter>
+  </IonApp>
+);
 
-  function loginUser() {
-    console.log(username, password);
-    console.log(setUsername, setPassword);
-  }
-
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Login</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className="ion-padding text-center">
-        <img className="inline-block p-5" src={logonic}></img>
-        <div className="text-webkit-center">
-          <IonInput
-            className="border border-black-500 w-2/12 rounded-lg text-center  "
-            placeholder="Username"
-            onIonChange={(e: any) => setUsername(e.target.value)}
-          />
-          <IonInput
-            className="border border-black-500 w-2/12 rounded-lg mt-3"
-            type="password"
-            placeholder="Password"
-            onIonChange={(e: any) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="mt-3">
-          <IonButton onClick={loginUser}>Login</IonButton>
-          <IonButton color="medium">Signup</IonButton>
-        </div>
-      </IonContent>
-    </IonPage>
-  );
-};
 export default App;
