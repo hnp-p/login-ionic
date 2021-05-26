@@ -47,13 +47,11 @@ const Tab2: React.FC = () => {
           />
         </div>
         <div className="mt-3">
-          <IonButton onClick={registerUser} color="medium">
-            Signup
-          </IonButton>
+          <IonButton onClick={registerUser}>Create</IonButton>
         </div>
-        <p>Already have an account?</p>{" "}
+        <p className="pt-5">Already have an account?</p>
         <Link to="/tab1">
-          <IonButton>Login</IonButton>
+          <IonButton color="medium">Login</IonButton>
         </Link>
       </IonContent>
     </IonPage>

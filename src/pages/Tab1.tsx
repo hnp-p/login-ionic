@@ -44,7 +44,7 @@ const Tab1: React.FC = () => {
         <div className="mt-3">
           <IonButton onClick={loginUser}>Login</IonButton>
         </div>
-        <p>New here?</p>{" "}
+        <p className="pt-5">New here?</p>{" "}
         <Link to="/tab2">
           <IonButton color="medium">Signup</IonButton>
         </Link>
