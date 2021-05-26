@@ -10,6 +10,7 @@ import {
 } from "@ionic/react";
 import "./Tab1.css";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Tab1: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -42,8 +43,11 @@ const Tab1: React.FC = () => {
         </div>
         <div className="mt-3">
           <IonButton onClick={loginUser}>Login</IonButton>
-          <IonButton color="medium">Signup</IonButton>
         </div>
+        <p>New here?</p>{" "}
+        <Link to="/tab2">
+          <IonButton color="medium">Signup</IonButton>
+        </Link>
       </IonContent>
     </IonPage>
   );
